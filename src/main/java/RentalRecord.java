@@ -27,6 +27,7 @@ public class RentalRecord {
     }
 
     public int getFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
             frequentRenterPoints++;
@@ -36,6 +37,5 @@ public class RentalRecord {
         return frequentRenterPoints;
     }
 
-    private int frequentRenterPoints = 0;
     private Vector rentals = new Vector();
 }
