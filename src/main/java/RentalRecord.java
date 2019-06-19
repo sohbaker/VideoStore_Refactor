@@ -1,8 +1,7 @@
 import java.util.*;
 
 public class RentalRecord {
-    public void addRentalToRecord(RentalType singleRental, String name) {
-        this.customerID = name;
+    public void addRentalToRecord(RentalType singleRental) {
         rentals.addElement(singleRental);
     }
 
@@ -37,7 +36,6 @@ public class RentalRecord {
         return frequentRenterPoints;
     }
 
-    private String customerID;
     private int frequentRenterPoints = 0;
     private Vector rentals = new Vector();
 }

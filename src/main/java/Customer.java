@@ -4,7 +4,7 @@ public class Customer {
     }
 
     public void addRental(RentalType singleRental) {
-        rentalRecord.addRentalToRecord(singleRental, this.name);
+        rentalRecord.addRentalToRecord(singleRental);
     }
 
     public String rentalStatement() {
