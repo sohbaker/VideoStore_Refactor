@@ -20,10 +20,9 @@ public class Children implements RentalType {
         return total;
     }
 
-    public String getType() { return this.type; }
+    public String getType() { return this.TYPE; }
 
     private String movieTitle;
     private int daysRented;
-    private String type = "Children";
-    // public static final int PRICE_CODE = 2;
+    private static final String TYPE = "Children";
 }

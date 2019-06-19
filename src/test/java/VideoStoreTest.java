@@ -15,8 +15,8 @@ public class VideoStoreTest extends TestCase {
     }
 
     public void testDualNewReleaseStatement() {
-        customer.addRental(new NewRelease("The Cell",3));
-        customer.addRental(new NewRelease("The Tigger Movie", 3));
+        customer.addRental(new NewRelease("The Cell", 3));
+        customer.addRental(new NewRelease("The Tigger Movie",  3));
         assertEquals("Rental Record for Fred\n\tThe Cell\t9.0\n\tThe Tigger Movie\t9.0\nYou owed 18.0\nYou earned 4 frequent renter points\n", customer.rentalStatement());
     }
 

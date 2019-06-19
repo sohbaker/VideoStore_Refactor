@@ -16,10 +16,9 @@ public class NewRelease implements RentalType {
         return getDaysRented() * 3;
     }
 
-    public String getType() { return this.type; }
+    public String getType() { return this.TYPE; }
 
     private String movieTitle;
     private int daysRented;
-    private String type = "New Release";
-    // public static final int PRICE_CODE = 1;
+    public static final String TYPE = "New Release";
 }

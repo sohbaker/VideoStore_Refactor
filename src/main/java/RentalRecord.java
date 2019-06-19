@@ -31,7 +31,7 @@ public class RentalRecord {
         while (rentals.hasMoreElements()) {
             frequentRenterPoints++;
             RentalType eachRental = (RentalType) rentals.nextElement();
-            if (eachRental.getType() == "New Release" && eachRental.getDaysRented() > 1) frequentRenterPoints++;
+            if (eachRental.getType() == NewRelease.TYPE && eachRental.getDaysRented() > 1) frequentRenterPoints++;
         }
         return frequentRenterPoints;
     }
