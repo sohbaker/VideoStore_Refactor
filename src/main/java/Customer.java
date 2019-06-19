@@ -6,7 +6,7 @@ public class Customer {
         this.name = name;
     }
 
-    public void addRental(Rental singleRental) {
+    public void addRental(RentalType singleRental) {
         rentals.addElement(singleRental);
     }
 
@@ -18,35 +18,20 @@ public class Customer {
         double totalOwed = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String statement = "Rental Record for " + getCustomerName() + "\n";
+        String statement = "RentalType Record for " + getCustomerName() + "\n";
 
         while (rentals.hasMoreElements()) {
             double calculateTotal = 0;
-            Rental eachRental = (Rental) rentals.nextElement();
-
-            switch (eachRental.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    calculateTotal += 2;
-                    if (eachRental.getDaysRented() > 2)
-                        calculateTotal += (eachRental.getDaysRented() - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASE:
-                    calculateTotal += eachRental.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    calculateTotal += 1.5;
-                    if (eachRental.getDaysRented() > 3)
-                        calculateTotal += (eachRental.getDaysRented() - 3) * 1.5;
-                    break;
-            }
+            RentalType eachRental = (RentalType) rentals.nextElement();
+            calculateTotal += eachRental.getTotalRentalCost();
 
             frequentRenterPoints++;
 
-            if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE
+            if (eachRental.getType() == "New Release"
                     && eachRental.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            statement += "\t" + eachRental.getMovie().getTitle() + "\t"
+            statement += "\t" + eachRental.getTitle() + "\t"
                     + calculateTotal + "\n";
             totalOwed += calculateTotal;
         }
