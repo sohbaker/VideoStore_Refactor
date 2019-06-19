@@ -1,5 +1,5 @@
-public class Regular implements RentalType {
-    public Regular(String title, int daysRented) {
+public class RegularMovie implements RentalType {
+    public RegularMovie(String title, int daysRented) {
         this.movieTitle = title;
         this.daysRented = daysRented;
     }

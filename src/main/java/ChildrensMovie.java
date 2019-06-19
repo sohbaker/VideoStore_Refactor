@@ -1,5 +1,5 @@
-public class NewRelease implements RentalType {
-    public NewRelease(String title, int daysRented) {
+public class ChildrensMovie implements RentalType {
+    public ChildrensMovie(String title, int daysRented) {
         this.movieTitle = title;
         this.daysRented = daysRented;
     }
@@ -13,12 +13,16 @@ public class NewRelease implements RentalType {
     }
 
     public double getTotalRentalCost() {
-        return getDaysRented() * 3;
+        double total = 1.5;
+        if (getDaysRented() > 3) {
+            total += (getDaysRented() - 3) * 1.5;
+        }
+        return total;
     }
 
     public String getType() { return this.TYPE; }
 
     private String movieTitle;
     private int daysRented;
-    public static final String TYPE = "New Release";
+    private static final String TYPE = "Childrens";
 }
