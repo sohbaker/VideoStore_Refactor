@@ -6,56 +6,56 @@ public class Customer {
         this.name = name;
     }
 
-    public void addRental(Rental rental) {
-        rentals.addElement(rental);
+    public void addRental(Rental singleRental) {
+        rentals.addElement(singleRental);
     }
 
-    public String getName() {
+    public String getCustomerName() {
         return name;
     }
 
-    public String statement() {
-        double totalAmount = 0;
+    public String rentalStatement() {
+        double totalOwed = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
+        String statement = "Rental Record for " + getCustomerName() + "\n";
 
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
+            double calculateTotal = 0;
+            Rental eachRental = (Rental) rentals.nextElement();
 
             // determines the amount for each line
-            switch (each.getMovie().getPriceCode()) {
+            switch (eachRental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    calculateTotal += 2;
+                    if (eachRental.getDaysRented() > 2)
+                        calculateTotal += (eachRental.getDaysRented() - 2) * 1.5;
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
+                    calculateTotal += eachRental.getDaysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    calculateTotal += 1.5;
+                    if (eachRental.getDaysRented() > 3)
+                        calculateTotal += (eachRental.getDaysRented() - 3) * 1.5;
                     break;
             }
 
             frequentRenterPoints++;
 
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && each.getDaysRented() > 1)
+            if (eachRental.getMovie().getPriceCode() == Movie.NEW_RELEASE
+                    && eachRental.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            result += "\t" + each.getMovie().getTitle() + "\t"
-                    + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            statement += "\t" + eachRental.getMovie().getTitle() + "\t"
+                    + String.valueOf(calculateTotal) + "\n";
+            totalOwed += calculateTotal;
         }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+        statement += "You owed " + String.valueOf(totalOwed) + "\n";
+        statement += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
 
-        return result;
+        return statement;
     }
 
 
