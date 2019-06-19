@@ -25,7 +25,7 @@ public class VideoStoreTest extends TestCase {
         assertEquals("Rental Record for Fred\n\tThe Tigger Movie\t1.5\nYou owed 1.5\nYou earned 1 frequent renter points\n", customer.rentalStatement());
     }
 
-    public void testMultipleChildrensStatement() {
+    public void testDualChildrensStatement() {
         customer.addRental(new ChildrensMovie("The Tigger Movie", 3));
         customer.addRental(new ChildrensMovie("Snow White", 3));
         assertEquals("Rental Record for Fred\n\tThe Tigger Movie\t1.5\n\tSnow White\t1.5\nYou owed 3.0\nYou earned 2 frequent renter points\n", customer.rentalStatement());
