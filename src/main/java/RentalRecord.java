@@ -1,5 +1,4 @@
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.*;
 
 public class RentalRecord {
     public void addRentalToRecord(RentalType singleRental, String name) {
