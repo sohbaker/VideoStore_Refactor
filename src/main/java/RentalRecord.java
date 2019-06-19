@@ -16,7 +16,6 @@ public class RentalRecord {
 
     public double getTotalOwed() {
         double totalOwed = 0;
-
         for (RentalType singleRental : rentals) {
             totalOwed += singleRental.getTotalRentalCost();
         }
@@ -25,7 +24,6 @@ public class RentalRecord {
 
     public int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
-
         for (RentalType singleRental : rentals) {
             frequentRenterPoints++;
             if (singleRental.getType() == NewReleaseMovie.TYPE && singleRental.getDaysRented() > 1) frequentRenterPoints++;

@@ -4,12 +4,14 @@ public class RegularMovie implements RentalType {
         this.daysRented = daysRented;
     }
 
-    public int getDaysRented() {
-        return daysRented;
-    }
-
     public String getTitle() {
         return this.movieTitle;
+    }
+
+    public String getType() { return this.TYPE; }
+
+    public int getDaysRented() {
+        return daysRented;
     }
 
     public double getTotalRentalCost() {
@@ -19,8 +21,6 @@ public class RegularMovie implements RentalType {
         }
         return total;
     }
-
-    public String getType() { return this.TYPE; }
 
     private String movieTitle;
     private int daysRented;
