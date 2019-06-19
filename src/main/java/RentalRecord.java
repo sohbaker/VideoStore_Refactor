@@ -5,16 +5,6 @@ public class RentalRecord {
         rentals.addElement(singleRental);
     }
 
-    public double getTotalOwed() {
-        double totalOwed = 0;
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
-            RentalType eachRental = (RentalType) rentals.nextElement();
-            totalOwed += eachRental.getTotalRentalCost();
-        }
-        return totalOwed;
-    }
-
     public String getDetailsOfMoviesRented() {
         String moviesRented = "";
         Enumeration rentals = this.rentals.elements();
@@ -26,13 +16,23 @@ public class RentalRecord {
         return moviesRented;
     }
 
+    public double getTotalOwed() {
+        double totalOwed = 0;
+        Enumeration rentals = this.rentals.elements();
+        while (rentals.hasMoreElements()) {
+            RentalType eachRental = (RentalType) rentals.nextElement();
+            totalOwed += eachRental.getTotalRentalCost();
+        }
+        return totalOwed;
+    }
+
     public int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
             frequentRenterPoints++;
             RentalType eachRental = (RentalType) rentals.nextElement();
-            if (eachRental.getType() == NewRelease.TYPE && eachRental.getDaysRented() > 1) frequentRenterPoints++;
+            if (eachRental.getType() == NewReleaseMovie.TYPE && eachRental.getDaysRented() > 1) frequentRenterPoints++;
         }
         return frequentRenterPoints;
     }
