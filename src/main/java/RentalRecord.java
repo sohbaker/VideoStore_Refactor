@@ -2,40 +2,36 @@ import java.util.*;
 
 public class RentalRecord {
     public void addRentalToRecord(RentalType singleRental) {
-        rentals.addElement(singleRental);
+        rentals.add(singleRental);
     }
 
     public String getDetailsOfMoviesRented() {
         String moviesRented = "";
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
-            RentalType eachRental = (RentalType) rentals.nextElement();
-            moviesRented += "\t" + eachRental.getTitle() + "\t"
-                    + eachRental.getTotalRentalCost() + "\n";
+        for (RentalType singleRental : rentals) {
+            moviesRented += "\t" + singleRental.getTitle() + "\t"
+                    + singleRental.getTotalRentalCost() + "\n";
         }
         return moviesRented;
     }
 
     public double getTotalOwed() {
         double totalOwed = 0;
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
-            RentalType eachRental = (RentalType) rentals.nextElement();
-            totalOwed += eachRental.getTotalRentalCost();
+
+        for (RentalType singleRental : rentals) {
+            totalOwed += singleRental.getTotalRentalCost();
         }
         return totalOwed;
     }
 
     public int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
+
+        for (RentalType singleRental : rentals) {
             frequentRenterPoints++;
-            RentalType eachRental = (RentalType) rentals.nextElement();
-            if (eachRental.getType() == NewReleaseMovie.TYPE && eachRental.getDaysRented() > 1) frequentRenterPoints++;
+            if (singleRental.getType() == NewReleaseMovie.TYPE && singleRental.getDaysRented() > 1) frequentRenterPoints++;
         }
         return frequentRenterPoints;
     }
 
-    private Vector rentals = new Vector();
+    private ArrayList<RentalType> rentals = new ArrayList<>();
 }
