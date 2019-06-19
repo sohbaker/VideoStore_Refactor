@@ -8,14 +8,11 @@ public class Customer {
     }
 
     public String rentalStatement() {
-        this.statement += "Rental Record for " + this.name + "\n";
-        this.statement += rentalRecord.getDetailsOfMoviesRented();
-        this.statement += "You owed " + rentalRecord.getTotalOwed() + "\n";
-        this.statement += "You earned " + rentalRecord.getFrequentRenterPoints() + " frequent renter points\n";
-        return this.statement;
+        statement.storeRecord(name, rentalRecord);
+        return statement.getStatement();
     }
 
     private String name;
-    private String statement = "";
+    private Statement statement = new Statement();
     private RentalRecord rentalRecord = new RentalRecord();
 }
