@@ -2,7 +2,7 @@ public class Statement {
     private String name;
     private RentalRecord rentalRecord;
 
-    public void accessRecord(String customerName, RentalRecord rentalRecord) {
+    public Statement(String customerName, RentalRecord rentalRecord) {
         this.name = customerName;
         this.rentalRecord = rentalRecord;
     }

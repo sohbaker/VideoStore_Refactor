@@ -1,6 +1,6 @@
 public class Customer {
     private String name;
-    private Statement statement = new Statement();
+
     private RentalRecord rentalRecord = new RentalRecord();
 
     public Customer(String name) {
@@ -12,7 +12,7 @@ public class Customer {
     }
 
     public String getRentalStatement() {
-        statement.accessRecord(name, rentalRecord);
+        Statement statement = new Statement(name, rentalRecord);
         return statement.getStatement();
     }
 }
