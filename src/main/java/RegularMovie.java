@@ -1,4 +1,4 @@
-public class RegularMovie implements RentalType {
+public class RegularMovie implements Rental {
     private String movieTitle;
     private int daysRented;
     private static final String TYPE = "Regular";

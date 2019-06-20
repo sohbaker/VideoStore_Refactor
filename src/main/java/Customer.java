@@ -7,7 +7,7 @@ public class Customer {
         this.name = name;
     }
 
-    public void addRental(RentalType singleRental) {
+    public void addRental(Rental singleRental) {
         rentalRecord.addRentalToRecord(singleRental);
     }
 

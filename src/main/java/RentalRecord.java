@@ -1,34 +1,34 @@
 import java.util.*;
 
 public class RentalRecord {
-    private ArrayList<RentalType> rentals = new ArrayList<>();
+    private ArrayList<Rental> rentals = new ArrayList<>();
 
-    public void addRentalToRecord(RentalType singleRental) {
-        rentals.add(singleRental);
+    public void addRentalToRecord(Rental rental) {
+        rentals.add(rental);
     }
 
     public String getDetailsOfMoviesRented() {
         String moviesRented = "";
-        for (RentalType singleRental : rentals) {
-            moviesRented += "\t" + singleRental.getTitle() + "\t"
-                    + singleRental.getTotalRentalCost() + "\n";
+        for (Rental rental : rentals) {
+            moviesRented += "\t" + rental.getTitle() + "\t"
+                    + rental.getTotalRentalCost() + "\n";
         }
         return moviesRented;
     }
 
     public double getTotalOwed() {
         double totalOwed = 0;
-        for (RentalType singleRental : rentals) {
-            totalOwed += singleRental.getTotalRentalCost();
+        for (Rental rental : rentals) {
+            totalOwed += rental.getTotalRentalCost();
         }
         return totalOwed;
     }
 
     public int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
-        for (RentalType singleRental : rentals) {
+        for (Rental rental : rentals) {
             frequentRenterPoints++;
-            if (singleRental.getType() == NewReleaseMovie.TYPE && singleRental.getDaysRented() > 1) frequentRenterPoints++;
+            if (rental.getType() == NewReleaseMovie.TYPE && rental.getDaysRented() > 1) frequentRenterPoints++;
         }
         return frequentRenterPoints;
     }

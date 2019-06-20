@@ -1,4 +1,4 @@
-public interface RentalType {
+public interface Rental {
     String getTitle();
 
     String getType();
