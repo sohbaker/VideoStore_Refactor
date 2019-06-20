@@ -5,10 +5,10 @@ public class RegularMovie implements RentalType {
     }
 
     public String getTitle() {
-        return this.movieTitle;
+        return movieTitle;
     }
 
-    public String getType() { return this.TYPE; }
+    public String getType() { return TYPE; }
 
     public int getDaysRented() {
         return daysRented;

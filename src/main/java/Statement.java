@@ -9,7 +9,7 @@ public class Statement {
     }
 
     private String customerName() {
-        return this.name;
+        return name;
     }
 
     private String moviesRented() {
