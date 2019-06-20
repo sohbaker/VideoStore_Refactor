@@ -2,52 +2,60 @@ import org.junit.*;
 import static org.junit.Assert.assertEquals;
 
 public class VideoStoreTest {
+    private ChildrensMovie childrensMovie;
+    private NewReleaseMovie newReleaseOne;
+    private NewReleaseMovie newReleaseTwo;
+    private RegularMovie regularMovie;
+    private Statement statement;
+    private double DELTA = 0.0;
+
     @Before
     public void setUp() {
-        customer = new Customer("Fred");
+        statement = new Statement("Customer");
+        childrensMovie = new ChildrensMovie("Children's", 1);
+        newReleaseOne = new NewReleaseMovie("New Release 1", 1);
+        newReleaseTwo = new NewReleaseMovie("New Release 2", 2);
+        regularMovie = new RegularMovie("Regular", 3);
+    }
+    
+    @Test
+    public void calculatesTotalForAChildrensMovie() {
+        statement.add(childrensMovie);
+        assertEquals(statement.getTotalOwed(), 1.5, DELTA);
+        assertEquals(statement.getTotalFrequentRenterPoints(), 1);
     }
 
     @Test
-    public void canCreateASingleNewReleaseStatement() {
-        customer.addRental(new NewReleaseMovie("The Cell", 3));
-        assertEquals("Rental Record for Fred\n\tThe Cell\t9.0\nYou owed 9.0\nYou earned 2 frequent renter points\n", customer.getRentalStatement());
+    public void calculatesTotalForARegularMovie() {
+        statement.add(regularMovie);
+        assertEquals(statement.getTotalOwed(), 3.5, DELTA);
+        assertEquals(statement.getTotalFrequentRenterPoints(), 1);
     }
 
     @Test
-    public void canCreateADualNewReleaseStatement() {
-        customer.addRental(new NewReleaseMovie("The Cell", 3));
-        customer.addRental(new NewReleaseMovie("The Tigger Movie",  3));
-        assertEquals("Rental Record for Fred\n\tThe Cell\t9.0\n\tThe Tigger Movie\t9.0\nYou owed 18.0\nYou earned 4 frequent renter points\n", customer.getRentalStatement());
+    public void calculatesTotalForANewReleaseMovieRentedForOneDay() {
+        statement.add(newReleaseOne);
+        assertEquals(statement.getTotalOwed(), 3.0, DELTA);
+        assertEquals(statement.getTotalFrequentRenterPoints(), 1);
     }
 
     @Test
-    public void canCreateASingleChildrensStatement() {
-        customer.addRental(new ChildrensMovie("The Tigger Movie", 3));
-        assertEquals("Rental Record for Fred\n\tThe Tigger Movie\t1.5\nYou owed 1.5\nYou earned 1 frequent renter points\n", customer.getRentalStatement());
+    public void calculatesTotalForANewReleaseMovieRentedForMoreThanOneDay() {
+        statement.add(newReleaseTwo);
+        assertEquals(statement.getTotalOwed(), 6.0, DELTA);
+        assertEquals(statement.getTotalFrequentRenterPoints(),2);
     }
 
     @Test
-    public void canCreateADualChildrensStatement() {
-        customer.addRental(new ChildrensMovie("The Tigger Movie", 3));
-        customer.addRental(new ChildrensMovie("Snow White", 3));
-        assertEquals("Rental Record for Fred\n\tThe Tigger Movie\t1.5\n\tSnow White\t1.5\nYou owed 3.0\nYou earned 2 frequent renter points\n", customer.getRentalStatement());
+    public void generatesARentalStatement() {
+        statement.add(newReleaseOne);
+        statement.add(childrensMovie);
+        statement.add(regularMovie);
+        assertEquals("Rental Record for Customer\n"
+                + "\tNew Release 1\t\t3.0\n"
+                + "\tChildren's\t\t1.5\n"
+                + "\tRegular\t\t3.5\n"
+                + "You owed 8.0\n"
+                + "You earned 3 frequent renter points\n", statement.generate());
     }
-
-    @Test
-    public void canCreateASingleRegularStatement() {
-        customer.addRental(new RegularMovie("Plan 9 from Outer Space", 1));
-
-        assertEquals("Rental Record for Fred\n\tPlan 9 from Outer Space\t2.0\nYou owed 2.0\nYou earned 1 frequent renter points\n", customer.getRentalStatement());
-    }
-
-    @Test
-    public void canCreateAMultipleRegularStatement() {
-        customer.addRental(new RegularMovie("Plan 9 from Outer Space", 1));
-        customer.addRental(new RegularMovie("8 1/2", 2));
-        customer.addRental(new RegularMovie("Eraserhead", 3));
-
-        assertEquals("Rental Record for Fred\n\tPlan 9 from Outer Space\t2.0\n\t8 1/2\t2.0\n\tEraserhead\t3.5\nYou owed 7.5\nYou earned 3 frequent renter points\n", customer.getRentalStatement());
-    }
-
-    private Customer customer;
 }
