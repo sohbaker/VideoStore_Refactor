@@ -19,8 +19,8 @@ public class ChildrensMovie implements Rental {
 
     public double getTotalRentalCost() {
         double total = 1.5;
-        if (getDaysRented() > 3) {
-            total += (getDaysRented() - 3) * 1.5;
+        if (daysRented > 3) {
+            total += (daysRented - 3) * 1.5;
         }
         return total;
     }

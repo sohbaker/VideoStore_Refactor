@@ -19,8 +19,8 @@ public class RegularMovie implements Rental {
 
     public double getTotalRentalCost() {
         double total = 2;
-        if (getDaysRented() > 2) {
-            total += (getDaysRented() - 2) * 1.5;
+        if (daysRented > 2) {
+            total += (daysRented - 2) * 1.5;
         }
         return total;
     }

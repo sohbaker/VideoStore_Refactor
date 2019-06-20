@@ -10,7 +10,7 @@ public class RentalRecord {
     public String getDetailsOfMoviesRented() {
         String moviesRented = "";
         for (Rental rental : rentals) {
-            moviesRented += "\t" + rental.getTitle() + "\t"
+            moviesRented += "\t" + rental.getTitle() + "\t\t"
                     + rental.getTotalRentalCost() + "\n";
         }
         return moviesRented;

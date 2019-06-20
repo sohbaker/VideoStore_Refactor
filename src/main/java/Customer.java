@@ -1,6 +1,5 @@
 public class Customer {
     private String name;
-
     private RentalRecord rentalRecord = new RentalRecord();
 
     public Customer(String name) {
@@ -11,7 +10,7 @@ public class Customer {
         rentalRecord.addRentalToRecord(singleRental);
     }
 
-    public String getRentalStatement() {
+    public String getStatement() {
         Statement statement = new Statement(name, rentalRecord);
         return statement.getStatement();
     }

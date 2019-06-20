@@ -16,7 +16,7 @@ public class NewReleaseMovie implements Rental {
     }
 
     public int getFrequentRenterPoints() {
-        if (getDaysRented() > 1) {
+        if (daysRented > 1) {
             return 2;
         } else {
             return 1;
