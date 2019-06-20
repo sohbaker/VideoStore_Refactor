@@ -1,9 +1,9 @@
 public interface Rental {
     String getTitle();
 
-    String getType();
-
     int getDaysRented();
+
+    int getFrequentRenterPoints();
 
     double getTotalRentalCost();
 }

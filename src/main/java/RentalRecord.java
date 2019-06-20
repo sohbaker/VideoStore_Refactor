@@ -27,8 +27,7 @@ public class RentalRecord {
     public int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
         for (Rental rental : rentals) {
-            frequentRenterPoints++;
-            if (rental.getType() == NewReleaseMovie.TYPE && rental.getDaysRented() > 1) frequentRenterPoints++;
+            frequentRenterPoints += rental.getFrequentRenterPoints();
         }
         return frequentRenterPoints;
     }
