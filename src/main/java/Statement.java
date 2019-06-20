@@ -1,29 +1,47 @@
+import java.util.ArrayList;
+
 public class Statement {
     private String name;
-    private RentalRecord rentalRecord;
+    private ArrayList<Rental> rentals = new ArrayList<>();
 
-    public Statement(String customerName, RentalRecord rentalRecord) {
+    public Statement(String customerName) {
         this.name = customerName;
-        this.rentalRecord = rentalRecord;
     }
 
-    public String getStatement() {
-        return String.format("Rental Record for %s\n%sYou owed %.1f\nYou earned %d frequent renter points\n",customerName(), moviesRented(), total(), frequentRenterPoints());
+    public void add(Rental rental) {
+        rentals.add(rental);
     }
 
-    private String customerName() {
-        return name;
+    public String generate() {
+        String moviesRented = getDetailsOfMoviesRented();
+        double total = getTotalOwed();
+        int frequentRenterPoints = getTotalFrequentRenterPoints();
+
+        return String.format("Rental Record for %s\n%sYou owed %.1f\nYou earned %d frequent renter points\n",name, moviesRented, total, frequentRenterPoints);
     }
 
-    private String moviesRented() {
-        return rentalRecord.getDetailsOfMoviesRented();
+    public String getDetailsOfMoviesRented() {
+        String moviesRented = "";
+        for (Rental rental : rentals) {
+            moviesRented += "\t" + rental.getTitle() + "\t\t"
+                    + rental.getTotalRentalCost() + "\n";
+        }
+        return moviesRented;
     }
 
-    private double total() {
-        return rentalRecord.getTotalOwed();
+    public double getTotalOwed() {
+        double totalOwed = 0;
+        for (Rental rental : rentals) {
+            totalOwed += rental.getTotalRentalCost();
+        }
+        return totalOwed;
     }
 
-    private int frequentRenterPoints() {
-        return rentalRecord.getFrequentRenterPoints();
+    public int getTotalFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
+        for (Rental rental : rentals) {
+            frequentRenterPoints += rental.getFrequentRenterPoints();
+        }
+        return frequentRenterPoints;
     }
 }

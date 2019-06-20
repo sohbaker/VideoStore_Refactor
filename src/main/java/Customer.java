@@ -1,17 +1,17 @@
 public class Customer {
     private String name;
-    private RentalRecord rentalRecord = new RentalRecord();
+    private Statement statement;
 
     public Customer(String name) {
         this.name = name;
+        this.statement = new Statement(this.name);
     }
 
     public void addRental(Rental singleRental) {
-        rentalRecord.addRentalToRecord(singleRental);
+        statement.add(singleRental);
     }
 
     public String getStatement() {
-        Statement statement = new Statement(name, rentalRecord);
-        return statement.getStatement();
+        return statement.generate();
     }
 }
