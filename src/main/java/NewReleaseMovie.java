@@ -1,4 +1,8 @@
 public class NewReleaseMovie implements RentalType {
+    private String movieTitle;
+    private int daysRented;
+    public static final String TYPE = "New Release";
+
     public NewReleaseMovie(String title, int daysRented) {
         this.movieTitle = title;
         this.daysRented = daysRented;
@@ -17,8 +21,4 @@ public class NewReleaseMovie implements RentalType {
     public double getTotalRentalCost() {
         return getDaysRented() * 3;
     }
-
-    private String movieTitle;
-    private int daysRented;
-    public static final String TYPE = "New Release";
 }

@@ -1,4 +1,7 @@
 public class Statement {
+    private String name;
+    private RentalRecord rentalRecord;
+
     public void accessRecord(String customerName, RentalRecord rentalRecord) {
         this.name = customerName;
         this.rentalRecord = rentalRecord;
@@ -23,7 +26,4 @@ public class Statement {
     private int frequentRenterPoints() {
         return rentalRecord.getFrequentRenterPoints();
     }
-
-    private String name;
-    private RentalRecord rentalRecord;
 }

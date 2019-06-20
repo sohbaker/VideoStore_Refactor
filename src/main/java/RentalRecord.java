@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class RentalRecord {
+    private ArrayList<RentalType> rentals = new ArrayList<>();
+
     public void addRentalToRecord(RentalType singleRental) {
         rentals.add(singleRental);
     }
@@ -30,6 +32,4 @@ public class RentalRecord {
         }
         return frequentRenterPoints;
     }
-
-    private ArrayList<RentalType> rentals = new ArrayList<>();
 }

@@ -1,4 +1,8 @@
 public class ChildrensMovie implements RentalType {
+    private String movieTitle;
+    private int daysRented;
+    private static final String TYPE = "Childrens";
+
     public ChildrensMovie(String title, int daysRented) {
         this.movieTitle = title;
         this.daysRented = daysRented;
@@ -21,8 +25,4 @@ public class ChildrensMovie implements RentalType {
         }
         return total;
     }
-
-    private String movieTitle;
-    private int daysRented;
-    private static final String TYPE = "Childrens";
 }

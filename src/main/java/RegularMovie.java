@@ -1,4 +1,8 @@
 public class RegularMovie implements RentalType {
+    private String movieTitle;
+    private int daysRented;
+    private static final String TYPE = "Regular";
+
     public RegularMovie(String title, int daysRented) {
         this.movieTitle = title;
         this.daysRented = daysRented;
@@ -21,8 +25,4 @@ public class RegularMovie implements RentalType {
         }
         return total;
     }
-
-    private String movieTitle;
-    private int daysRented;
-    private static final String TYPE = "Regular";
 }

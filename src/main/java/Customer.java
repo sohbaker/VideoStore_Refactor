@@ -1,4 +1,8 @@
 public class Customer {
+    private String name;
+    private Statement statement = new Statement();
+    private RentalRecord rentalRecord = new RentalRecord();
+
     public Customer(String name) {
         this.name = name;
     }
@@ -11,8 +15,4 @@ public class Customer {
         statement.accessRecord(name, rentalRecord);
         return statement.getStatement();
     }
-
-    private String name;
-    private Statement statement = new Statement();
-    private RentalRecord rentalRecord = new RentalRecord();
 }
