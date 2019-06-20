@@ -7,8 +7,8 @@ public class Customer {
         rentalRecord.addRentalToRecord(singleRental);
     }
 
-    public String rentalStatement() {
-        statement.storeRecord(name, rentalRecord);
+    public String getRentalStatement() {
+        statement.accessRecord(name, rentalRecord);
         return statement.getStatement();
     }
 

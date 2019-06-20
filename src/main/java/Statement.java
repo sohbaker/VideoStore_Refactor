@@ -1,5 +1,5 @@
 public class Statement {
-    public void storeRecord(String customerName, RentalRecord rentalRecord) {
+    public void accessRecord(String customerName, RentalRecord rentalRecord) {
         this.name = customerName;
         this.rentalRecord = rentalRecord;
     }
